@@ -3,10 +3,12 @@
 #include "enemizer.h"
 #include "common.h"
 
-#define EnTorch2_Init ((ActorFunc)GAME_ADDR(0x1F853C))
-#define EnTorch2_Update ((ActorFunc)GAME_ADDR(0x22F0C8))
+void EnTorch2_Init(Actor* thisx, GlobalContext* globalCtx);
+void EnTorch2_Update(Actor* thisx, GlobalContext* globalCtx);
 
 u8 sPlayerWeaponClanked = FALSE;
+
+#define IDLE_STANDING_ANIM_IDX 0x58
 
 void EnTorch2_rInit(Actor* thisx, GlobalContext* globalCtx) {
     EnTorch2_Init(thisx, globalCtx);
@@ -58,6 +60,15 @@ void EnTorch2_rUpdate(Actor* thisx, GlobalContext* globalCtx) {
             case ENTORCH2_WAIT:
                 // Avoid triggering fall damage effect when spawning in certain locations.
                 this->darkPlayer.fallStartHeight = thisx->world.pos.y;
+
+                // Sometimes during the first update cycle the animation changes to the falling one, so we need to
+                // restore it. Check water level in case it can raise and submerge Dark Link while idle.
+                if (this->darkPlayer.skelAnime.animIndex != IDLE_STANDING_ANIM_IDX &&
+                    this->darkPlayer.actor.depthInWater <= 0) {
+                    LinkAnimation_Change(&this->darkPlayer.skelAnime, globalCtx, IDLE_STANDING_ANIM_IDX, 1.0, 0.0, 0.0,
+                                         0, 0.0);
+                }
+
                 break;
             case ENTORCH2_ATTACK:
                 CollisionPoly floorPoly;

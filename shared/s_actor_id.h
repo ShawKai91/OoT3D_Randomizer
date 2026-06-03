@@ -1,5 +1,4 @@
-#ifndef _Z3DACTOR_ID_H_
-#define _Z3DACTOR_ID_H_
+#pragma once
 
 enum ActorId {
     ACTOR_STALFOS            = 0x002,
@@ -11,6 +10,7 @@ enum ActorId {
     ACTOR_DODONGO            = 0x012,
     ACTOR_KEESE              = 0x013,
     ACTOR_EN_ITEM00          = 0x015,
+    ACTOR_ARROW              = 0x016,
     ACTOR_TEKTITE            = 0x01B,
     ACTOR_LEEVER             = 0x01C,
     ACTOR_PEAHAT             = 0x01D,
@@ -29,6 +29,7 @@ enum ActorId {
     ACTOR_DEKU_BABA          = 0x055,
     ACTOR_MAD_SCRUB          = 0x060,
     ACTOR_BARI               = 0x063,
+    ACTOR_HOOKSHOT           = 0x066,
     ACTOR_BUBBLE             = 0x069,
     ACTOR_FLYING_FLOOR_TILE  = 0x06B,
     ACTOR_BEAMOS             = 0x08A,
@@ -48,11 +49,13 @@ enum ActorId {
     ACTOR_PARASITIC_TENTACLE = 0x0DE,
     ACTOR_ANUBIS             = 0x0E0,
     ACTOR_SPIKE              = 0x0EC,
+    ACTOR_RED_ICE            = 0x0EF,
     ACTOR_ANUBIS_SPAWNER     = 0x0F6,
     ACTOR_IRON_KNUCKLE       = 0x113,
     ACTOR_SKULL_KID          = 0x115,
     ACTOR_FLYING_POT         = 0x11D,
     ACTOR_FREEZARD           = 0x121,
+    ACTOR_WINDMILL_OBJECTS   = 0x123,
     ACTOR_BG_JYA_IRONOBJ     = 0x169,
     ACTOR_STINGER_WATER      = 0x18C,
     ACTOR_HINT_DEKU_SCRUB    = 0x192,
@@ -62,5 +65,3 @@ enum ActorId {
     ACTOR_GUAY               = 0x1C0,
     ACTOR_MAX                = 0x1DB,
 };
-
-#endif //_Z3DACTOR_ID_H_
